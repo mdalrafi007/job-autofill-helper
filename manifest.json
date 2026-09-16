@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Job Application Autofill Helper",
+  "version": "1.0.0",
+  "description": "Fills job application forms from your saved profile and answer bank, only on the page you're already on and only when you click Fill. It never searches, navigates, or submits for you.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

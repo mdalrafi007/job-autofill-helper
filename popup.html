@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Job Application Autofill Helper</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img src="icons/icon32.png" alt="" />
+      <div>
+        <h1>Autofill Helper</h1>
+        <p class="tagline">Fills the page you're on. Nothing more.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="fill" role="tab">Fill Page</button>
+    <button class="tab-btn" data-tab="profile" role="tab">Profile</button>
+    <button class="tab-btn" data-tab="answers" role="tab">Answer Bank</button>
+  </nav>
+
+  <main>
+    <section id="tab-fill" class="tab-panel active">
+      <p class="hint">
+        Open a job application form yourself, then click Fill. The extension
+        only reads and fills the fields on that page — it never clicks
+        Apply or Submit for you.
+      </p>
+      <button id="fillBtn" class="primary-btn">Fill this page's form</button>
+      <div id="fillStatus" class="status" aria-live="polite"></div>
+      <ul id="fillReport" class="fill-report"></ul>
+    </section>
+
+    <section id="tab-profile" class="tab-panel">
+      <p class="hint">Saved once, reused on every form. Stored only on this device.</p>
+      <form id="profileForm" class="stacked-form">
+        <div class="grid-2">
+          <label>First name<input name="first_name" type="text" /></label>
+          <label>Last name<input name="last_name" type="text" /></label>
+        </div>
+        <label>Full name<input name="full_name" type="text" /></label>
+        <div class="grid-2">
+          <label>Email<input name="email" type="email" /></label>
+          <label>Phone<input name="phone" type="tel" /></label>
+        </div>
+        <div class="grid-2">
+          <label>Phone country code<input name="phone_country_code" type="text" placeholder="+880" /></label>
+          <label>Country<input name="country" type="text" /></label>
+        </div>
+        <div class="grid-2">
+          <label>City<input name="city" type="text" /></label>
+          <label>State / Division<input name="state" type="text" /></label>
+        </div>
+        <label>Headline<input name="headline" type="text" placeholder="e.g. AI/ML enthusiast &amp; prompt engineer" /></label>
+        <label>Summary<textarea name="summary" rows="3"></textarea></label>
+        <div class="grid-2">
+          <label>Current title<input name="current_title" type="text" /></label>
+          <label>Current company<input name="current_company" type="text" /></label>
+        </div>
+        <label>Total years of experience<input name="total_years_experience" type="text" /></label>
+        <div class="grid-2">
+          <label>Highest degree<input name="highest_degree" type="text" /></label>
+          <label>Field of study<input name="field_of_study" type="text" /></label>
+        </div>
+        <div class="grid-2">
+          <label>University<input name="university" type="text" /></label>
+          <label>Graduation year<input name="graduation_year" type="text" /></label>
+        </div>
+        <label>Skills (comma-separated)<input name="skills" type="text" /></label>
+        <label>Certifications (comma-separated)<input name="certifications" type="text" /></label>
+        <label>Languages (comma-separated)<input name="languages" type="text" /></label>
+        <div class="grid-2">
+          <label>LinkedIn URL<input name="linkedin_url" type="url" /></label>
+          <label>GitHub URL<input name="github_url" type="url" /></label>
+        </div>
+        <label>Portfolio URL<input name="portfolio_url" type="url" /></label>
+        <div class="grid-2">
+          <label>Work authorization<input name="work_authorization" type="text" placeholder="e.g. Requires sponsorship" /></label>
+          <label>Requires visa sponsorship
+            <select name="requires_visa_sponsorship">
+              <option value="">—</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid-2">
+          <label>Willing to relocate
+            <select name="willing_to_relocate">
+              <option value="">—</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </label>
+          <label>Notice period (days)<input name="notice_period_days" type="text" /></label>
+        </div>
+        <div class="grid-2">
+          <label>Current CTC<input name="current_ctc" type="text" /></label>
+          <label>Expected CTC<input name="expected_ctc" type="text" /></label>
+        </div>
+        <button type="submit" class="primary-btn">Save profile</button>
+        <span id="profileSaved" class="save-flash" aria-live="polite"></span>
+      </form>
+    </section>
+
+    <section id="tab-answers" class="tab-panel">
+      <p class="hint">
+        Save answers to questions that keep repeating ("Why do you want to
+        work here?"). When a form's question is close enough to one you've
+        saved, Fill Page will suggest it — you can edit before it fills.
+      </p>
+      <form id="qaForm" class="qa-form">
+        <input id="qaQuestion" type="text" placeholder="Question (e.g. Why do you want this role?)" required />
+        <textarea id="qaAnswer" rows="3" placeholder="Your answer" required></textarea>
+        <button type="submit" class="primary-btn">Add to Answer Bank</button>
+      </form>
+      <ul id="qaList" class="qa-list"></ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>All data stays on this device. Nothing is sent anywhere.</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
